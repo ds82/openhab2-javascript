@@ -42,10 +42,6 @@ function channelTrigger(channel, event, triggerName) {
   return new Trigger(triggerName || uuid.randomUUID(), "core.ChannelEventTrigger", new Configuration({
     channelUID: channel,
     event: event
-
-      // "eventSource": channel,
-      // "eventTopic":"smarthome/channels/" + event + "/triggered",
-      // "eventTypes":"ChannelTriggeredEvent"
   }));
 }
 
@@ -53,7 +49,6 @@ function channelTrigger(channel, event, triggerName) {
 //
 // rule helper
 //
-
 function addRule(name, fn, trigger, opts) {
   opts = opts || {};
 
@@ -133,9 +128,4 @@ function off(item) {
 
 function momentFromItem(item) {
   return moment(getItem(item).state.toString());
-}
-
-function isBeforeSunrise(when) {
-  when = when ? moment(when) : moment();
-  return when.isBefore(momentFromItem('Astro_SunriseTime'));
 }
