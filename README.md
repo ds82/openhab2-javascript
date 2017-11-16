@@ -10,64 +10,50 @@ The JSR223 scripting extensions can be used for general scripting purposes, incl
 
 One the primary use cases for the JSR223 scripting is to define rules for the [Eclipse SmartHome (ESH) rule engine](http://www.eclipse.org/smarthome/documentation/features/rules.html).
 
-### Rules: Raw ESH API
-
-Using the raw ESH API, the simplest rule definition would look something like:
-
+### Defining Rules using a simplified API
 
 ```JavaScript
 'use strict';
-se.importPreset("RuleSupport");
-se.importPreset("RuleSimple");
 
-var sRule = new SimpleRule(){
-    execute: function( module, input){
-        print("################ module:", module);
-        events.postUpdate(ir.getItem("testItemSwitch"), ON);
-        events.sendCommand(ir.getItem("testItemSwitch"), OFF);
-    }
-};
+// init sets up everything you need to write rules
+load('./../conf/automation/jsr223/jslib/init.js');
 
-sRule.setTriggers([
-        new Trigger(
-            "aTimerTrigger", 
-            "timer.GenericCronTrigger", 
-            new Configuration({
-                "cronExpression": "0/15 * * * * ?"
-            })
-        )
-    ]);
 
-automationManager.addRule(sRule);
+addRule(
+  'test-rule-01',
+  function(module, input) {
+    logger.info(['~~~@>', 'test-rule', module, input.event].join('; '));
+  },
+  [changeStateTrigger('TestSwitch', ON)]
+);
+
+addRule(
+  'astro-test-rule-rise',
+  function(module, input) {
+    logger.info(
+      ['astro-test-rule', 'astro event triggered', module, input.event].join(
+        '; '
+      )
+    );
+  },
+  [
+    channelTrigger('astro:sun:home:rise#event', 'START'),
+    channelTrigger('astro:sun:home:rise#start', 'START'),
+    channelTrigger('astro:sun:home:rise#end', 'START'),
+    channelTrigger('astro:sun:home:rise#event', 'START'),
+    channelTrigger('astro:sun:home:set#event', 'START'),
+    channelTrigger('astro:sun:home:set#start', 'START')
+  ]
+);
+
+addRule(
+  'test-rule-02',
+  function(module, input) {
+    logger.info(['is before sunrise?', isBeforeSunrise()].join(' '));
+    logger.info(['is before sunset?', isBeforeSunset()].join(' '));
+    logger.info(['is after sunrise?', isAfterSunrise()].join(' '));
+    logger.info(['is after sunset?', isAfterSunset()].join(' '));
+  },
+  [timeTrigger('0/10 * * * * ?')]
+);
 ```
-
-This can be simplified with some extra JavaScript Code, found in `jslib/JSRule.js`:
-
-```JavaScript
-'use strict';
-load('./../conf/automation/jsr223/jslib/JSRule.js');
-
-JSRule({
-    name: "My JS Rule",
-    description: "Line:"+__LINE__,
-    triggers: [
-        TimerTrigger("0/15 * * * * ?")//Enable/Disable Rule
-    ],
-    execute: function( module, input){
-        print("################ module:", module);
-        events.postUpdate(ir.getItem("testItemSwitch"), ON);
-        events.sendCommand(ir.getItem("testItemSwitch"), OFF);
-    }
-});
-```
-
-`jslib/helper.js` contains more simplifying and helping functions.
-
-`jslib/PersistenceExtensions.js` contains more simplifying PersistenceExtensions functions.
-
-`jslib/triggersAndConditions.js` contains trigger functions.
-
-`ActionExamples.js` contains examples for default actions like PersistenceExtensions, HTTP, Ping, Audio, Voice, ThingAction.
-
- 
-
