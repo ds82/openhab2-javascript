@@ -1,4 +1,4 @@
-# openHAB 2.x: JSR223 JavaScript  Code
+# openHAB 2.x: JSR223 JavaScript Code
 
 This is a repository of very experimental JavaScript code that can be used with the SmartHome platform and openHAB 2.x.
 
@@ -57,3 +57,5 @@ addRule(
   [timeTrigger('0/10 * * * * ?')]
 );
 ```
+
+# API
