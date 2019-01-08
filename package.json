@@ -10,9 +10,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "documentation": "^9.1.1",
+    "@babel/core": "^7.2.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.11.1",
+    "eslint-config-rea": "^3.0.0",
+    "jest": "^23.6.0",
+    "prettier": "1.15.3",
+    "regenerator-runtime": "^0.13.1"
   },
   "dependencies": {
-    "documentation": "^9.1.1"
   }
 }
