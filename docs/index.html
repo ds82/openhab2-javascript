@@ -25,6 +25,16 @@
               
                 
                 <li><a
+                  href='#endtrim'
+                  class="">
+                  endTrim
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#addrule'
                   class="">
                   addRule
@@ -35,9 +45,9 @@
               
                 
                 <li><a
-                  href='#timetrigger'
+                  href='#trigger'
                   class="">
-                  timeTrigger
+                  Trigger
                   
                 </a>
                 
@@ -45,9 +55,9 @@
               
                 
                 <li><a
-                  href='#trigger'
+                  href='#timetrigger'
                   class="">
-                  Trigger
+                  timeTrigger
                   
                 </a>
                 
@@ -183,6 +193,26 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#'
+                  class="">
+                  
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#'
+                  class="">
+                  
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -191,6 +221,67 @@
         </div>
       </div>
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='endtrim'>
+      endTrim
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>STRING FUNCTIONS *</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>endTrim(x: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>x</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
         
           
           <section class='p2 mb2 clearfix bg-white minishadow'>
@@ -282,6 +373,54 @@
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='trigger'>
+      Trigger
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Every rule needs a trigger. The trigger decides when the rule is executed.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>Trigger</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='timetrigger'>
       timeTrigger
     </h3>
@@ -332,54 +471,6 @@ run rules regulary in fixed time intervalls</p>
 
       
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='trigger'>
-      Trigger
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Every rule needs a trigger. The trigger decides when the rule is executed.</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>Trigger</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
   
 
   
@@ -484,7 +575,8 @@ run rules regulary in fixed time intervalls</p>
   </div>
   
 
-  
+  <p>trigger for channel events</p>
+
  
   
     <div class='pre p1 fill-light mt0'>channelTrigger(channel: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, triggerName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</div>
@@ -506,7 +598,8 @@ run rules regulary in fixed time intervalls</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>channel</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    
+	    The channel this trigger observes
+
           </div>
           
         </div>
@@ -514,7 +607,8 @@ run rules regulary in fixed time intervalls</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    
+	    The event this trigger should look for
+
           </div>
           
         </div>
@@ -522,7 +616,8 @@ run rules regulary in fixed time intervalls</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>triggerName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
-	    
+	    (optional) Name of trigger
+
           </div>
           
         </div>
@@ -536,6 +631,12 @@ run rules regulary in fixed time intervalls</p>
 
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>channelTrigger(<span class="hljs-string">'astro:sun:home_offsetm10:set#event'</span>, <span class="hljs-string">'START'</span>)</pre>
+    
   
 
   
@@ -1287,6 +1388,104 @@ If the given itemName is an item (not a group) the command is only send if the i
         </div>
       
     </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id=''>
+      
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Copyright (c) 2018 by Helmut Lehmeyer.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'></div>
+   
+  
+  
+
+  
+  
+  
+  <div>Author: Helmut Lehmeyer
+https://github.com/lewie/openhab2-javascript/blob/master/jslib/PersistenceExtensions.js</div>
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id=''>
+      
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Copyright (c) 2018 by Helmut Lehmeyer.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'></div>
+   
+  
+  
+
+  
+  
+  
+  <div>Author: Helmut Lehmeyer
+https://github.com/lewie/openhab2-javascript/blob/master/jslib/triggersAndConditions.js</div>
+  
+  
+
   
 
   
